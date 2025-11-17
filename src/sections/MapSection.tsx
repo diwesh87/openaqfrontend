@@ -25,7 +25,7 @@ export function MapSection({ countryCode, countryName }: MapSectionProps) {
 
   if (!countryCode) {
     return (
-      <div className="flex items-center justify-center py-12 text-gray-500">
+      <div className="flex items-center justify-center py-12 text-gray-500 dark:text-gray-400 transition-colors duration-300">
         Select a country to view the map
       </div>
     );
@@ -39,13 +39,13 @@ export function MapSection({ countryCode, countryName }: MapSectionProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-neon-cyan mb-1 transition-colors duration-300">
           Map & Sensors - {countryName}
         </h2>
-        <p className="text-gray-600">Air quality monitoring stations and city locations</p>
+        <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Air quality monitoring stations and city locations</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 transition-colors duration-300 shadow-sm dark:shadow-neon-cyan/10">
         <div className="mb-6 rounded-lg overflow-hidden" style={{ height: '500px' }}>
           <MapComponent points={points} />
         </div>
@@ -54,17 +54,17 @@ export function MapSection({ countryCode, countryName }: MapSectionProps) {
           {points.map((point, idx) => (
             <div
               key={idx}
-              className="bg-gray-50 rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow"
+              className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-md dark:hover:shadow-neon-cyan/20 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">{point.city}</h4>
-                  <p className="text-xs text-gray-500">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 transition-colors duration-300">{point.city}</h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
                     {point.latitude.toFixed(4)}, {point.longitude.toFixed(4)}
                   </p>
                 </div>
                 <div
-                  className={`px-2 py-1 rounded text-xs font-bold text-white ${getAQIBgColor(
+                  className={`px-2 py-1 rounded text-xs font-bold text-white shadow-sm dark:shadow-neon-cyan/30 ${getAQIBgColor(
                     point.aqiIndex
                   )}`}
                 >
@@ -74,12 +74,12 @@ export function MapSection({ countryCode, countryName }: MapSectionProps) {
 
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">PM2.5:</span>
-                  <span className="font-medium text-gray-900">{point.pm25} µg/m³</span>
+                  <span className="text-gray-600 dark:text-gray-400 transition-colors duration-300">PM2.5:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">{point.pm25} µg/m³</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Category:</span>
-                  <span className="font-medium text-gray-900">{point.aqiCategory}</span>
+                  <span className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Category:</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">{point.aqiCategory}</span>
                 </div>
               </div>
             </div>
@@ -87,9 +87,9 @@ export function MapSection({ countryCode, countryName }: MapSectionProps) {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="font-semibold text-blue-900 mb-2">About the Data</h4>
-        <p className="text-sm text-blue-800">
+      <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-4 transition-colors duration-300">
+        <h4 className="font-semibold text-blue-900 dark:text-neon-cyan mb-2 transition-colors duration-300">About the Data</h4>
+        <p className="text-sm text-blue-800 dark:text-gray-300 transition-colors duration-300">
           Sensor locations and readings are updated in real-time from the OpenAQ network. Each
           marker represents an active monitoring station measuring various air pollutants.
         </p>
@@ -151,9 +151,9 @@ function MapComponent({ points }: { points: HeatmapPoint[] }) {
   // Early return after all hooks are called
   if (!isMounted) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-500">
+      <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400 transition-colors duration-300">
         <div className="text-center">
-          <MapPin className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+          <MapPin className="w-16 h-16 mx-auto mb-4 text-gray-400 dark:text-gray-500 transition-colors duration-300" />
           <p>Loading map...</p>
         </div>
       </div>
@@ -162,9 +162,9 @@ function MapComponent({ points }: { points: HeatmapPoint[] }) {
 
   if (points.length === 0) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-500">
+      <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400 transition-colors duration-300">
         <div className="text-center">
-          <MapPin className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+          <MapPin className="w-16 h-16 mx-auto mb-4 text-gray-400 dark:text-gray-500 transition-colors duration-300" />
           <p>No location data available</p>
         </div>
       </div>
