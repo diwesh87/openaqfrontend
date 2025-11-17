@@ -39,8 +39,8 @@ An interactive, real-time air quality dashboard built with React, TypeScript, an
 
 3. **Set up environment variables**
    ```bash
-   # Create .env file (optional - backend handles API key)
-   # VITE_API_URL=http://localhost:8000
+   # Create .env file (optional - for local development)
+   # VITE_API_BASE_URL=http://localhost:8000
    ```
 
 4. **Start development server**
@@ -77,7 +77,8 @@ This frontend is designed to be deployed on **Vercel**.
    Or connect your GitHub repository to Vercel for automatic deployments.
 
 3. **Environment Variables**
-   - Set `VITE_API_URL` to your backend API URL (e.g., `https://your-backend.railway.app`)
+   - Set `VITE_API_BASE_URL` to your backend API URL (e.g., `https://your-backend.railway.app`)
+   - **Important**: Do NOT include a trailing slash in the URL
 
 ## 📁 Project Structure
 
